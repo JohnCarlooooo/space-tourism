@@ -2,26 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  .text-heading1 {
+    @apply font-bellefair text-[150px];
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .text-heading2 {
+    @apply font-bellefair text-[100px];
+  }
+  .text-heading3 {
+    @apply font-bellefair text-[56px];
+  }
+  .text-heading4 {
+    @apply font-bellefair text-[32px];
+  }
+  .text-heading5 {
+    @apply font-barlow text-[28px] tracking-[4.75px];
+  }
+  .text-subHeading1 {
+    @apply font-bellefair text-[28px];
+  }
+  .text-subHeading2 {
+    @apply font-bellefair text-[14px] tracking-[2.35px];
+  }
+  .text-nav {
+    @apply font-bellefair text-[16px] tracking-[2.7px] font-normal;
+  }
+  .text-body {
+    @apply font-barlow text-[15px] leading-[25px] text-LightBlue font-normal;
+  }
+  .explore-btn {
+    @apply bg-white rounded-full h-[150px] w-[150px] flex justify-center items-center;
+  }
 }
