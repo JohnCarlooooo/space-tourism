@@ -41,6 +41,7 @@ const PreLoader = ({
       duration: 0.5,
     });
   }, []);
+
   const getLoadingName = (path: string): string => {
     if (path === "/") return "Loading Space";
     if (path === "/destination") return "Loading Destinations";

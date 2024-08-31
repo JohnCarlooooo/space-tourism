@@ -26,8 +26,8 @@ const SwiperMobile = ({
           swiperRef.current = core;
         }}
       >
-        {list.map((technology) => (
-          <SwiperSlide>
+        {list.map((technology, idx) => (
+          <SwiperSlide key={idx}>
             <div
               className="flex flex-row justify-center items-center border-bottom relative w-auto h-[170px] tablet:h-[310px]"
               key={technology.name}

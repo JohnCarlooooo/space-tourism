@@ -22,8 +22,8 @@ const SwiperMobile = ({ crews: list, setSelectedIndex, swiperRef }: props) => {
           swiperRef.current = core;
         }}
       >
-        {list.map((crew) => (
-          <SwiperSlide>
+        {list.map((crew, idx) => (
+          <SwiperSlide key={idx}>
             <div
               className="flex flex-row justify-center items-center border-bottom relative w-auto h-[222px]"
               key={crew.name}

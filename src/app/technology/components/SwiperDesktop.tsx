@@ -25,8 +25,8 @@ const SwiperDesktop = ({
           swiperRef.current = core;
         }}
       >
-        {list.map((technology) => (
-          <SwiperSlide>
+        {list.map((technology, idx) => (
+          <SwiperSlide key={idx}>
             <div
               className="flex flex-row justify-center items-center border-bottom relative w-auto h-[170px] tablet:h-[310px] desktop:h-[527px] desktop:w-[515px]"
               key={technology.name}

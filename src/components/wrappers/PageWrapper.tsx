@@ -6,6 +6,12 @@ import Header from "../ui/Header";
 import Sidebar from "../ui/Sidebar";
 import PreLoader from "../ui/PreLoader";
 
+interface Backgrounds {
+  mobile: string;
+  tablet: string;
+  desktop: string;
+}
+
 const backgrounds: any = {
   "/": {
     mobile: "bg-home-mobile",
@@ -27,13 +33,22 @@ const backgrounds: any = {
     tablet: "bg-technology-tablet",
     desktop: "bg-technology-desktop",
   },
+  default: {
+    mobile: "bg-home-mobile",
+    tablet: "bg-home-tablet",
+    desktop: "bg-home-desktop",
+  },
+};
+const getBackgrounds = (pathname: string): Backgrounds => {
+  if (backgrounds[pathname]) return backgrounds[pathname];
+  return backgrounds["default"];
 };
 const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   const [sidebarOpen, sidebarCycleOpen] = useCycle<boolean>(false, true);
   const [preloaders, setPreloaders] = useState<string[]>([]);
   const pathname = usePathname();
-  const dynamicBackground = `${backgrounds[pathname]["mobile"]} tablet:${backgrounds[pathname]["tablet"]} desktop:${backgrounds[pathname]["desktop"]}`;
-
+  const bg = getBackgrounds(pathname);
+  const dynamicBackground = `${bg["mobile"]} tablet:${bg["tablet"]} desktop:${bg["desktop"]}`;
   useEffect(() => {
     if (preloaders.length === 0)
       setPreloaders((prevState) => [...prevState, pathname]);

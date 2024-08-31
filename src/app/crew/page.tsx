@@ -2,13 +2,16 @@ import { Metadata } from "next";
 import Display from "./components/Display";
 
 async function getCrews() {
-  const res = await fetch("http://localhost:3000/api/crews", {
-    cache: "default",
-  });
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
+  // const res = await fetch("http://localhost:3000/api/crews", {
+  //   cache: "default",
+  // });
+  // if (!res.ok) {
+  //   throw new Error("Failed to fetch data!!!!!!!!!!!!!");
+  // }
+  // return res.json();
+  const data = await import("../../../public/data.json");
+
+  return JSON.stringify(data.crew);
 }
 
 export const metadata: Metadata = {
