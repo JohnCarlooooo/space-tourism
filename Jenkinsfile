@@ -6,6 +6,7 @@ pipeline {
         script {
           echo "INFO: Build Stage"
         }
+        sh 'docker version'
         sh 'docker build -t nextjs-docker .'
       }
     }
