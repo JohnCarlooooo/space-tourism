@@ -56,6 +56,8 @@ RUN chown nextjs:nodejs .next
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+COPY /nginx /etc/nginx/conf.d
+
 USER nextjs
 
 EXPOSE 3000
