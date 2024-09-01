@@ -6,6 +6,7 @@ pipeline {
         script {
           echo "INFO: Build Stage"
         }
+        sh 'docker build -t nextjs-docker .'
       }
     }
     stage("Deploy") {
@@ -13,6 +14,7 @@ pipeline {
         script {
           echo "INFO: Deploy Stage"
         }
+        sh 'docker run --net main_network --ip 10.10.10.13 nextjs-docker' 
       }
     }
   }
