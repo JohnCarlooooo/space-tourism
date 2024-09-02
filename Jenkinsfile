@@ -5,7 +5,7 @@ pipeline {
 			steps {
 				script {
 					echo "INFO: Installing Dependencies"
-					npm install
+					sh 'npm install'
 				}
 			}
 		}
