@@ -40,7 +40,7 @@ const Display = ({ technologies: list }: props) => {
       </div>
       <SwiperDesktop
         technologies={list}
-        swiperRef={swiperRef}
+        swiperRef={swiperRef2}
         setSelectedIndex={setSelectedIndex}
       />
     </div>
