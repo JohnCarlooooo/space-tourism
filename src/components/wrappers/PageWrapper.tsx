@@ -50,7 +50,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   const bg = getBackgrounds(pathname);
   const dynamicBackground = `${bg["mobile"]} tablet:${bg["tablet"]} desktop:${bg["desktop"]}`;
   useEffect(() => {
-    if (preloaders.length === 0)
+    if (!preloaders.includes(pathname))
       setPreloaders((prevState) => [...prevState, pathname]);
   }, [pathname]);
 
