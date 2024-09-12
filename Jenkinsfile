@@ -15,7 +15,7 @@ pipeline {
         script {
           echo "INFO: Deploy Stage"
           sh 'docker stop nextjs-space || true && docker rm nextjs-space || true'
-					sh 'docker run --name nextjs-space --restart=always --net main_network --ip 10.10.10.13 -d nextjs-space'
+					sh 'docker run --name nextjs-space --restart=always --net main_network --ip 10.10.10.21 -d nextjs-space'
         }
       }
     }
