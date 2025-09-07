@@ -58,6 +58,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
     if (!preloaders.includes(path))
       setPreloaders((prevState) => [...prevState, path]);
   };
+  console.log("preloaders", preloaders);
   return (
     <>
       {preloaders.length !== 0 && (
@@ -79,9 +80,9 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
           </div>
         </>
       )}
-      {preloaders.map((p) => (
+      {/* {preloaders.map((p) => (
         <PreLoader key={p} pathname={p} preloaders={preloaders} />
-      ))}
+      ))} */}
     </>
   );
 };
