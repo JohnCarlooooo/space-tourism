@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         APP_NAME = "space"  
-        CONTAINER_PORT = "8001"    
+        CONTAINER_PORT = "8080"    
 
         // AUTO: No need to change
         DOCKER_IMAGE = "${APP_NAME}:latest"
