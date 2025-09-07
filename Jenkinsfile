@@ -1,22 +1,47 @@
 pipeline {
-  agent any
-  stages {
-    stage("Build") {
-      steps {
-        script {
-          echo "INFO: Build Stage"
-					sh 'docker version'
-	        sh 'docker build -t nextjs-docker .'
-        }
-      }
+    agent any
+
+    environment {
+        APP_NAME = "space"  
+        CONTAINER_PORT = "8001"    
+
+        // AUTO: No need to change
+        DOCKER_IMAGE = "${APP_NAME}:latest"
+        DOMAIN = "space.johncarlo.xyz"
     }
-    stage("Deploy") {
-      steps {
-        script {
-          echo "INFO: Deploy Stage"
-					sh 'docker run --net main_network --ip 10.10.10.13 -v ./node_modules nextjs-docker' 
+
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                sh "docker build -t ${DOCKER_IMAGE} ."
+            }
         }
-      }
+
+        stage('Stop Old Container') {
+            steps {
+                sh """
+                docker stop ${APP_NAME} || true
+                docker rm ${APP_NAME} || true
+                """
+            }
+        }
+
+        stage('Run New Container') {
+            steps {
+                sh """
+                docker run -d --name ${APP_NAME} \\
+                  --network infrastructure_infra \\
+                  -e VIRTUAL_HOST=${DOMAIN} \\
+                  -e VIRTUAL_PORT=${CONTAINER_PORT} \\
+                  ${DOCKER_IMAGE}
+                """
+            }
+        }
+
+        stage('Cleanup Docker') {
+            steps {
+                sh "docker image prune -f"
+            }
+        }
     }
-  }
 }
