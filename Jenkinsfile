@@ -7,7 +7,7 @@ pipeline {
 
         // AUTO: No need to change
         DOCKER_IMAGE = "${APP_NAME}:latest"
-        DOMAIN = "space.johncarlo.xyz"
+        DOMAIN = "${APP_NAME}.johncarlo.xyz"
     }
 
     stages {
