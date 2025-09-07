@@ -80,9 +80,9 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
           </div>
         </>
       )}
-      {/* {preloaders.map((p) => (
+      {preloaders.map((p) => (
         <PreLoader key={p} pathname={p} preloaders={preloaders} />
-      ))} */}
+      ))}
     </>
   );
 };
