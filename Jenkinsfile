@@ -31,10 +31,10 @@ pipeline {
                 sh """
                 docker run -d --name ${APP_NAME} \\
                   --network infrastructure_infra \\
+                  --restart unless-stopped \\
                   -e VIRTUAL_HOST=${DOMAIN} \\
                   -e VIRTUAL_PORT=${CONTAINER_PORT} \\
-                  ${DOCKER_IMAGE} \\
-                  --restart unless-stopped
+                  ${DOCKER_IMAGE}
                 """
             }
         }
