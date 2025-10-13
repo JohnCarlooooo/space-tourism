@@ -33,7 +33,8 @@ pipeline {
                   --network infrastructure_infra \\
                   -e VIRTUAL_HOST=${DOMAIN} \\
                   -e VIRTUAL_PORT=${CONTAINER_PORT} \\
-                  ${DOCKER_IMAGE}
+                  ${DOCKER_IMAGE} \\
+                  --restart unless-stopped
                 """
             }
         }
