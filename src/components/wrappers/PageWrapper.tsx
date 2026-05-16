@@ -58,7 +58,6 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
     if (!preloaders.includes(path))
       setPreloaders((prevState) => [...prevState, path]);
   };
-  console.log("preloaders", preloaders);
   return (
     <>
       {preloaders.length !== 0 && (
